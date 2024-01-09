@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 50px;
+        }
+
+        #weather-container {
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        input {
+            padding: 8px;
+        }
+
+        button {
+            padding: 10px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Weather App</h1>
+
+    <div id="weather-container">
+        <label for="city">Enter city:</label>
+        <input type="text" id="city" placeholder="City">
+        <button onclick="getWeather()">Get Weather</button>
+
+        <div id="weather-info"></div>
+    </div>
+
+    <script>
+        function getWeather() {
+            // Mock data (replace this with actual data from an API in a real application)
+            const mockData = {
+                name: 'Mock City',
+                sys: { country: 'MO' },
+                main: { temp: 290, humidity: 70 },
+                weather: [{ description: 'Clear' }]
+            };
+
+            const weatherInfo = document.getElementById('weather-info');
+            weatherInfo.innerHTML = `
+                <h2>${mockData.name}, ${mockData.sys.country}</h2>
+                <p>Temperature: ${(mockData.main.temp - 273.15).toFixed(2)}°C</p>
+                <p>Weather: ${mockData.weather[0].description}</p>
+                <p>Humidity: ${mockData.main.humidity}%</p>
+            `;
+        }
+    </script>
+
+</body>
+</html>
